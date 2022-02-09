@@ -1,0 +1,65 @@
+:root {
+  --dark: #292C35;
+	--light: #F1F1F1;
+	--label: #111;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  place-items: center;
+
+  height: 100vh;
+
+  background: var(--light);
+  transition: 0.5s;
+}
+
+.dark-theme {
+  background: var(--dark);
+}
+
+input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 12rem;
+  height: 5rem;
+  background: var(--label);
+  float: right;
+  border-radius: 100px;
+  position: relative;
+
+  /* Load image inside the input element */
+  background-image: url('assets/moon.svg'), url('assets/sun.svg');
+  background-position: 0.5rem 0.5rem, 7.5rem 0.5rem;
+  background-size: 4rem 4rem;
+  background-repeat: no-repeat;
+}
+
+label::after {
+  content: '';
+  position: absolute;
+  top: 0.5rem;
+  left: 0.4rem;
+  width: 4rem;
+  height: 4rem;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+input:checked + label::after {
+  left: calc(100% - 0.3rem);
+  transform: translateX(-100%)
+}
